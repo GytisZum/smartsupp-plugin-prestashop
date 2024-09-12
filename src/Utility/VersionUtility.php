@@ -1,7 +1,7 @@
 <?php
 /**
  * Smartsupp Live Chat integration module.
- * 
+ *
  * @package   Smartsupp
  * @author    Smartsupp <vladimir@smartsupp.com>
  * @link      http://www.smartsupp.com
@@ -19,12 +19,17 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-header('Expires: Mon, 26 Jul 1998 05:00:00 GMT');
-header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+namespace Smartsupp\LiveChat\Utility;
 
-header('Cache-Control: no-store, no-cache, must-revalidate');
-header('Cache-Control: post-check=0, pre-check=0', false);
-header('Pragma: no-cache');
+class VersionUtility
+{
+    public static function isPsVersionGreaterThan($version)
+    {
+        return version_compare(_PS_VERSION_, $version, '>');
+    }
 
-header('Location: ../');
-exit;
+    public static function isPsVersionGreaterOrEqualTo($version)
+    {
+        return version_compare(_PS_VERSION_, $version, '>=');
+    }
+}
